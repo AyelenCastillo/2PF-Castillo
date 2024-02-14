@@ -1,41 +1,38 @@
 import { Injectable } from "@angular/core";
-import { of } from "rxjs";
-import { Cursos } from "./models";
-
+import { HttpClient } from "@angular/common/http";
+import { Observable, map } from "rxjs";
+import { Course } from "./models";
 
 @Injectable()
+export class CursosService {
 
+  constructor(private httpClient: HttpClient) {}
 
-export class cursosService {
+  getCourse(): Observable<Course[]> {
+    return this.httpClient.get<Course[]>('http://localhost:3000/courses');
+  }
 
-   cursos: Cursos[] = [
-    {
-        id: 1,
-        name: "Photoshop & Ilustrator",
-        hours: "12:00 - 16:00 hs",
-        date: "Lunes & Miercoles",
-        description: "Curso introductorio de las herramientas Adobe Photoshop & Ilistrator",
-        price: "$100.000",
-      },
-      {
-        id: 2,
-        name: "Dibujo Digital ",
-        hours: "12:00 - 16:00 hs",
-        date: "Martes & Jueves",
-        description: "Curso introductorio al Dibujo en entornos digitales, Técnicas de Dibujo y Coloración ",
-        price: "$112.000",
-      },
-      {
-        id: 3,
-        name: "Introdución al Diseño Grafico",
-        hours: "20:00 - 22:00 hs",
-        date: "Lunes & Miercoles",
-        description: "Curso introductorio donde se veran temas como: Forma, Formatos, Colores, etc",
-        price: "$115.000",
-      },
-  ];
+  addCourse(newCourse: Course): Observable<Course> {
+    return this.httpClient.post<Course>('http://localhost:3000/courses', newCourse);
+  }
+
+  deleteCourse(courseId: number): Observable<Course> {
+    return this.httpClient.delete<Course>(`http://localhost:3000/courses/${courseId}`);
+  }
+
+  getCourseById(courseId: number): Observable<Course> {
+    return this.httpClient.get<Course>(`http://localhost:3000/courses/${courseId}`);
+  }  
+  updateCourse(updatedCourse: Course): Observable<Course> {
+    return this.httpClient.put<Course>(`http://localhost:3000/courses/${updatedCourse.id}`, updatedCourse);
+  }
+
+  findCourseByRegistrationInfo(name: string): Observable<Course | undefined> {
+    return this.httpClient.get<Course[]>('http://localhost:3000/courses').pipe(
+      map(courses => courses.find(courses => 
+        courses.name === name 
+      ))
+    );
+  }
   
-    getCursos(){
-        return of(this.cursos);
-    }
 }

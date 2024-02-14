@@ -1,0 +1,209 @@
+{
+  "users": [
+    {
+      "email": "admin@example.com",
+      "password": "Admin1",
+      "role": "ADMIN"
+    },
+    {
+      "idUser": 1,
+      "firstName": "Alejandro",
+      "lastName": "García",
+      "email": "alejandro_garcia@example.com",
+      "password": "123456789",
+      "role": "Estudiante",
+      "dni": "98765432100",
+      "birth": "07/15/1992",
+      "id": "4ec4"
+    },
+    {
+      "idUser": 2,
+      "firstName": "Valentina",
+      "lastName": "Rodriguez",
+      "email": "valentina_rodriguez@example.com",
+      "password": "123456789",
+      "role": "Estudiante",
+      "dni": "12345678901",
+      "birth": "04/23/1987",
+      "id": "f0d1"
+    },
+    {
+      "idUser": 3,
+      "firstName": "Sebastian",
+      "lastName": "Perez",
+      "email": "sebastian_perez@example.com",
+      "password": "123456789",
+      "role": "Estudiante",
+      "dni": "87654321098",
+      "birth": "10/06/2005",
+      "id": "28c1"
+    },
+    {
+      "idUser": 4,
+      "firstName": "Sophia",
+      "lastName": "Rodriguez",
+      "email": "sophia_rodriguez@example.com",
+      "password": "pass123",
+      "role": "Profesor",
+      "dni": "23456789012",
+      "birth": "02/14/1979",
+      "id": "7903"
+    },
+    {
+      "idUser": 5,
+      "firstName": "Daniel",
+      "lastName": "Hernandez",
+      "email": "daniel_hernandez@example.com",
+      "password": "d@ni3lP@ss",
+      "role": "Estudiante",
+      "dni": "56789012345",
+      "birth": "09/30/1998",
+      "id": "a81f"
+    },
+    {
+      "idUser": 6,
+      "firstName": "Emily",
+      "lastName": "Johnson",
+      "email": "emily_johnson@example.com",
+      "password": "password123!",
+      "role": "Estudiante",
+      "dni": "34567890123",
+      "birth": "05/12/2011",
+      "id": "8501"
+    },
+    {
+      "idUser": 7,
+      "firstName": "Juan",
+      "lastName": "Ramirez",
+      "email": "juan_ramirez@example.com",
+      "password": "ju@nR@mir3z",
+      "role": "Profesor",
+      "dni": "89012345678",
+      "birth": "11/25/1984",
+      "id": "3e08"
+    },
+    {
+      "idUser": 8,
+      "firstName": "Ava",
+      "lastName": "Taylor",
+      "email": "ava_taylor@example.com",
+      "password": "taylorAva567",
+      "role": "Estudiante",
+      "dni": "45678901234",
+      "birth": "08/03/2000",
+      "id": "9931"
+    },
+    {
+      "idUser": 9,
+      "firstName": "Eduardo",
+      "lastName": "Gomez",
+      "email": "eduardo_gomez@example.com",
+      "password": "edu1234",
+      "role": "Estudiante",
+      "dni": "10987654321",
+      "birth": "03/18/1995",
+      "id": "fec3"
+    },
+    {
+      "idUser": 10,
+      "firstName": "Mia",
+      "lastName": "Martinez",
+      "email": "mia_martinez@example.com",
+      "password": "martinezMia1",
+      "role": "Estudiante",
+      "dni": "54321098765",
+      "birth": "06/07/1972",
+      "id": "45f1"
+    }
+  ],
+  "courses": [
+    {
+      "idCourse": 101,
+      "name": "Photoshop & Ilustrator",
+      "hours": "12:00 - 16:00 hs",
+      "date": "Lunes & Miercoles",
+      "description": "Curso introductorio de las herramientas Adobe Photoshop & Ilistrator",
+      "start": "2024-02-13T03:00:00.000Z",
+      "end": "2024-04-12T03:00:00.000Z",
+      "id": "7a34"
+    },
+    {
+      "idCourse": 102,
+      "name": "Dibujo Digital",
+      "hours": "12:00 - 16:00 hs",
+      "date": "Martes & Jueves",
+      "description": "Curso introductorio al Dibujo en entornos digitales, Técnicas de Dibujo y Coloración",
+      "start": "2024-02-17T03:00:00.000Z",
+      "end": "2024-03-27T03:00:00.000Z",
+      "id": "388e"
+    },
+    {
+      "idCourse": 103,
+      "name": "Introdución al Diseño Grafico",
+      "hours": "17:00 - 21:00 hs",
+      "date": "Sábados & Domingo",
+      "description": "Curso introductorio donde se veran temas como: Forma, Formatos, Colores, etc",
+      "start": "2024-02-12T03:00:00.000Z",
+      "end": "2024-04-16T03:00:00.000Z",
+      "id": "dbe0"
+    }
+  ],
+  "registrations": [
+    {
+      "id": "1",
+      "firstName": "Alejandro",
+      "lastName": "García",
+      "email": "alejandro_garcia@example.com",
+      "course": "Photoshop & Ilustrator",
+      "schedule": "Lunes & Miercoles 12:00 - 16:00 hs"
+    },
+    {
+      "id": "2",
+      "firstName": "Valentina",
+      "lastName": "Rodriguez",
+      "email": "valentina_rodriguez@example.com",
+      "course": "Introdución al Diseño Grafico",
+      "schedule": "Sábados & Domingo 17:00 - 21:00 hs"
+    },
+    {
+      "id": "3",
+      "firstName": "Sebastian",
+      "lastName": "Perez",
+      "email": "sebastian_perez@example.com",
+      "course": "Dibujo Digital",
+      "schedule": "Martes & Jueves 12:00 - 16:00 hs"
+    },
+    {
+      "id": "4",
+      "firstName": "Sophia",
+      "lastName": "Rodriguez",
+      "email": "sophia_rodriguez@example.com",
+      "course": "Photoshop & Ilustrator",
+      "schedule": "Lunes & Miercoles 12:00 - 16:00 hs"
+    },
+    {
+      "id": "5",
+      "firstName": "Daniel",
+      "lastName": "Hernandez",
+      "email": "daniel_hernandez@example.com",
+      "course": "Photoshop & Ilustrator",
+      "schedule": "Lunes & Miercoles 12:00 - 16:00 hs"
+    },
+    {
+      "id": "6",
+      "firstName": "Emily",
+      "lastName": "Johnson",
+      "email": "emily_johnson@example.com",
+      "course": "Introdución al Diseño Grafico",
+      "schedule": "Sábados & Domingo 17:00 - 21:00 hs"
+    },
+    {
+      "id": "7",
+      "firstName": "Juan",
+      "lastName": "Ramirez",
+      "email": "juan_ramirez@example.com",
+      "course": "Photoshop & Ilustrator",
+      "schedule": "Lunes & Miercoles 12:00 - 16:00 hs"
+    }
+  ]
+}

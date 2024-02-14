@@ -1,12 +1,10 @@
 *{
-    background-color: beige;
     display: flex;
     flex-direction: column;
   }
 
 .container{
   width: 100%;
-  background-color: beige;
   margin-bottom: 20px;
 }
 .form{
@@ -18,6 +16,7 @@
   width: 100%;
   padding: 8px;
 }
+
 
 form{
   padding: 1rem;

@@ -28,6 +28,18 @@
             La contraseña debe contener al menos una letra y un número.
           </mat-error>        
         </mat-form-field>
+
+        <mat-form-field class="dni">
+          <mat-label>N° de Documento</mat-label>
+          <input formControlName="dni" matInput type="text" />
+        </mat-form-field>
+  
+        <mat-form-field class="birth">
+          <mat-label>Fecha de Nacimiento</mat-label>
+          <input matInput [matDatepicker]="picker" formControlName="birth">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
   
         <mat-form-field class="role">
           <mat-label>Rol</mat-label>

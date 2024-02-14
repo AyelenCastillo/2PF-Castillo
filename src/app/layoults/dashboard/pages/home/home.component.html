@@ -33,7 +33,7 @@
       <h2>Contenido de Alumnos Destacados</h2>
       <div class="social-cards-container">
         <div *ngFor="let post of posts.slice((paginaActual - 1) * tamanoPagina, paginaActual * tamanoPagina)" class="social-card">
-          <!-- Contenido de la tarjeta -->
+       
           <img src="{{ post.imageUrl }}" alt="Imagen de la publicación">
           <div class="card-content">
             <p>{{ post.description }}</p>

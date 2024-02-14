@@ -1,0 +1,117 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: rgb(109, 118, 158);
+    background-size: cover;
+    height: 100vh; 
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+  }
+  
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  mat-card {
+    max-width: 400px;
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    background-color: transparent;
+    border: none;
+  }
+  
+  .mat-card-content {
+    padding: 20px;
+  }
+  
+  .mat-form-field {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+  
+  .mat-input-element {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  .button {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  button[type="submit"] {
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    border: 1px solid black;
+    border-radius: 5%;
+    color: black;
+    background-color: lightgrey;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: white;
+    border-color: black;
+  }
+  
+  .logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .icon-art {
+    height: auto;
+    width: 4rem;
+  }
+  
+  .artcom {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 2rem;
+    color: rgb(245, 255, 225);
+    background: -moz-linear-gradient(90deg, rgba(245, 255, 225, 1) 0%, rgba(250, 138, 255, 1) 35%, rgba(159, 239, 255, 1) 100%);
+    background: -webkit-linear-gradient(90deg, rgba(245, 255, 225, 1) 0%, rgba(250, 138, 255, 1) 35%, rgba(159, 239, 255, 1) 100%);
+    background: linear-gradient(90deg, rgba(245, 255, 225, 1) 0%, rgba(250, 138, 255, 1) 35%, rgba(159, 239, 255, 1) 100%);
+    -webkit-background-clip: text;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#f5ffe1", endColorstr="#9fefff", GradientType=1);
+    color: transparent;
+    font-style: oblique;
+  }
+  
+  .eye-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .eye-icon {
+    color: #666;
+  }
+.email{
+    width: 240px;
+    margin-bottom: 20px;
+}
+
+mat-error {
+  color: red;
+  margin-top: 10px; 
+  margin-bottom: 10px; 
+  font-size: 14px;
+}

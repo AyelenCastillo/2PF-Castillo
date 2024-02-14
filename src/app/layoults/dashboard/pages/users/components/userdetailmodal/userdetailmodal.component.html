@@ -1,9 +1,9 @@
 <div>
   <button mat-button class="x" (click)="cerrar()"> <mat-icon aria-label="close-button">clear</mat-icon></button>
-    <h2>Detalles del Usuario</h2>
-    <p><strong>ID:</strong> {{ usuario.id }}</p>
-    <p><strong>Nombre Completo:</strong> {{ usuario.firstName }} {{ usuario.lastName }}</p>
-    <p><strong>Email:</strong> {{ usuario.email }}</p>
-    <p><strong>Rol:</strong> {{ usuario.role }}</p>
-  </div>
-  
+  <h2>Detalles del Usuario</h2>
+  <p><strong>Nombre Completo:</strong> {{ usuario?.firstName }} {{ usuario?.lastName }}</p>
+  <p><strong>Email:</strong> {{ usuario?.email }}</p>
+  <p><strong>Número de Documento:</strong> {{ usuario?.dni }}</p> 
+  <p><strong>Fecha de Naimiento</strong> {{ usuario?.birth | date: 'dd/MM/yyyy'}}</p> 
+  <p><strong>Rol:</strong> {{ usuario?.role }}</p> 
+</div>

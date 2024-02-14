@@ -1,1 +1,35 @@
-<p>login works!</p>
+<body>
+    <div class="container">
+      <mat-card>
+        <mat-card-title class="logo">
+          <img class="icon-art" src="../../../assets/img/art_97515.ico" alt="icono arte">
+          <span class="artcom"><b>Artcom</b></span>
+        </mat-card-title>
+        <mat-card-content>
+          <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <div>
+              <mat-form-field class="email">
+                <input formControlName="email" matInput>
+                <mat-error>{{ getEmailErrorMessage() }}</mat-error>
+              </mat-form-field>
+            </div>
+            <div>
+              <mat-form-field>
+                <input type="{{ showPassword ? 'text' : 'password' }}" matInput placeholder="Password" formControlName="password">
+                <button mat-icon-button matSuffix class="eye-button" (click)="togglePasswordVisibility()">
+                  <mat-icon class="eye-icon">{{ showPassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+                </button>
+                <mat-error>{{ getPasswordErrorMessage() }}</mat-error>
+              </mat-form-field> 
+              <p>Cuenta para probar ingresar <br> como usuario común: <br> alejandro_garcia[at]example.com <br> pass:123456789</p>  
+            </div>       
+                       
+            <div class="button">
+              <button type="submit" mat-raised-button>Login</button>
+            </div>
+          </form>          
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </body>
+  

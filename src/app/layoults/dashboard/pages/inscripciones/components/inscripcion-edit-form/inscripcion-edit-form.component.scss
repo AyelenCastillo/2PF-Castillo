@@ -1,30 +1,21 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+*{
+    display: flex;
+    flex-direction: column;
+  }
 
-.x{
+.container{
+  width: 100%;
+  margin-bottom: 20px;
+}
+.form{
   display: flex;
-  margin-left: auto;
+  justify-content: center;
+  align-items: center;
 }
 
-.container {
-  display: flex;
-  flex-direction: column;
-  height: 100vh; 
-}
 
-form {
-  background-color: beige;
+form{
   padding: 1rem;
-  max-height: 700px; 
-  overflow-y: auto;
-}
-
-.firstName, .lastname, .email, .password, .birth, .dni, .role,.date,.curso,.hours {
-  width: 90%;
-  padding: 8px;
 }
 .button{
   align-items: center;
@@ -39,3 +30,11 @@ form {
   background-color: lightgray;
 }
 
+.user-form-modal-header{
+  margin-top: 20px;
+}
+
+.x{
+  display: flex;
+  margin-left: auto;
+}

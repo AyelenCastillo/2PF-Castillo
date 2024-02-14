@@ -1,11 +1,11 @@
 <div>
-   <button mat-button class="x" (click)="cerrar()"> <mat-icon aria-label="close-button">clear</mat-icon></button>
-    <h2>Detalles del Usuario</h2>
-    <p><strong>ID:</strong> {{ cursos.id }}</p>
-    <p><strong>Nombre del Curso:</strong> {{ cursos.name }}</p>
-    <p><strong>Dias de Cursada:</strong> {{ cursos.date }}</p>
-    <p><strong>Horarios:</strong> {{ cursos.hours }}</p>
-    <p><strong>Descripción:</strong> {{ cursos.description }}</p>
-    <p><strong>Precio:</strong> {{ cursos.price }}</p>
-  </div>
-  
+  <button mat-button class="x" (click)="cerrar()"> <mat-icon aria-label="close-button">clear</mat-icon></button>
+  <h2>Detalles del Curso </h2>
+  <p><strong>ID:</strong> {{ course?.id }}</p>
+  <p><strong>Nombre del Curso:</strong> {{ course?.name }}</p>
+  <p><strong>Días de Cursada:</strong> {{ course?.date }}</p>
+  <p><strong>Horarios:</strong> {{ course?.hours }}</p>
+  <p><strong>Inicio de Curso:</strong> {{ course?.start | date: 'dd/MM/yyyy' }}</p>
+  <p><strong>Finalización de Curso:</strong> {{ course?.end | date: 'dd/MM/yyyy' }}</p>
+  <p><strong>Descripción:</strong> {{ course?.description }}</p>
+</div>

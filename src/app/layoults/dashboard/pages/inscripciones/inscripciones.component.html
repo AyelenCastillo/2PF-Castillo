@@ -1,55 +1,100 @@
-<button mat-raised-button class="Acursos" (click)="abrirFormulario()">Inscribir Usuario</button>
-    <table mat-table [dataSource]="Inscripciones" class="mat-elevation-z8">
-  
-      <ng-container matColumnDef="id">
-        <th mat-header-cell *matHeaderCellDef appSizeTitle> No. </th>
-        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
-      </ng-container>
-    
-      <ng-container matColumnDef="fullName">
-        <th mat-header-cell *matHeaderCellDef appSizeTitle> Nombre Completo </th>
-        <td mat-cell *matCellDef="let element"> {{element | fullName}} </td>
-      </ng-container>
-    
-      <ng-container matColumnDef="curso">
-        <th mat-header-cell *matHeaderCellDef appSizeTitle> Curso </th>
-        <td mat-cell *matCellDef="let element"> {{element.curso}} </td>
-      </ng-container>
-     
-      <ng-container matColumnDef="role">
-        <th mat-header-cell *matHeaderCellDef appSizeTitle> Rol </th>
-        <td mat-cell *matCellDef="let element"> {{element.role}} </td>
-      </ng-container>
-
-      <ng-container matColumnDef="date">
-        <th mat-header-cell *matHeaderCellDef appSizeTitle> Fecha de cursada </th>
-        <td mat-cell *matCellDef="let element"> {{element.date}} </td>
-      </ng-container>
-
-      <ng-container matColumnDef="hours">
-        <th mat-header-cell *matHeaderCellDef appSizeTitle> Horarios </th>
-        <td mat-cell *matCellDef="let element"> {{element.hours}} </td>
-      </ng-container>
-
-      <ng-container matColumnDef="actions">
-        <th mat-header-cell *matHeaderCellDef appSizeTitle> Acciones </th>
-        <td *matCellDef="let element">
-          <button (click)="eliminarFila(element)">
-            <mat-icon aria-label="Eliminar fila">delete</mat-icon>
-          </button>
-          <button   (click)="editarFila(element)">
-            <mat-icon aria-label="Editar fila">edit</mat-icon>
-          </button>
-          <button  (click)="mostrarDetallesModal(element)">
-            <mat-icon aria-label="Mostrar detalles">info</mat-icon>
-          </button>  
-        </td>
-      </ng-container>
+<div class="container">  
+  <div [ngClass]="{ 'disabled-accordion': !accordionEnabled }">
+    <mat-accordion >
+      <mat-expansion-panel [expanded]="false" hideToggle="false">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+     <b>Inscripciones</b> 
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <h3>Aviso: Los nombres e email deben coincidir con un usuario registrado.</h3>
+    <p> Nombres e Email de prueba Ava Taylor ava_taylor[at]example.com /Eduardo Gomez eduardo_gomez[at]example.com /Mia Martinez mia_martinez[at]example.com  </p>
+    <div class="form-container"> 
+      <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">  
+          <mat-form-field class="firstName">
+            <mat-label>Nombre</mat-label>
+            <input formControlName="firstName" matInput type="text" />
+          </mat-form-field>
+          <mat-form-field class="lastname">
+            <mat-label>Apellido</mat-label>
+            <input formControlName="lastName" matInput type="text" />
+          </mat-form-field>
       
-      <!--configuraciones-->
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    </table>
+          <mat-form-field class="email">
+            <mat-label>Email</mat-label>
+            <input formControlName="email" matInput type="email" />
+            <mat-error *ngIf="registrationForm.get('email')?.touched && registrationForm.get('email')?.hasError('email')">
+              Por favor, introduce un email válido.
+            </mat-error>
+          </mat-form-field>
+      
+          <mat-form-field class="curso">
+            <mat-label>Curso</mat-label>
+            <mat-select formControlName="course" (selectionChange)="onCourseSelectionChange($event.value)">
+              <mat-option *ngFor="let course of courses" [value]="course.name">{{ course.name }}</mat-option>
+            </mat-select>            
+          </mat-form-field>
+      
+          <mat-form-field class="schedule" *ngIf="selectedCourseSchedule && selectedCourseSchedule.date && selectedCourseSchedule.hours">
+            <mat-label>Día y Hora</mat-label>
+            <mat-select formControlName="schedule">
+              <mat-option [value]="selectedCourseSchedule.date + ' ' + selectedCourseSchedule.hours">
+                {{ selectedCourseSchedule.date }} - {{ selectedCourseSchedule.hours }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+      
+          <button type="submit" class="cargar" mat-button>Cargar</button>
+      </form>
+     
+</div>
+  </mat-expansion-panel>
+</mat-accordion>
+<table mat-table [dataSource]="registration" class="mat-elevation-z8">
+  
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef>No.</th>
+    <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+  </ng-container>
+  
+  <ng-container matColumnDef="fullName">
+    <th mat-header-cell *matHeaderCellDef>Nombre Completo</th>
+    <td mat-cell *matCellDef="let element">{{ element.firstName }} {{ element.lastName }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="email">
+    <th mat-header-cell *matHeaderCellDef>Email</th>
+    <td mat-cell *matCellDef="let element">{{ element.email }}</td>
+  </ng-container>
+  
+  <ng-container matColumnDef="curso">
+    <th mat-header-cell *matHeaderCellDef>Curso</th>
+    <td mat-cell *matCellDef="let element">{{ element.course }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="schedule">
+    <th mat-header-cell *matHeaderCellDef>Días de cursada</th>
+    <td mat-cell *matCellDef="let element">{{ element.schedule }}</td>
+  </ng-container>
+ 
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef appSizeTitle> Acciones </th>
+    <td *matCellDef="let element">
+      <button (click)="deleteRegistration(element.id)">
+        <mat-icon aria-label="Eliminar fila">delete</mat-icon>
+      </button>
+      <button   (click)="editRegistration(element)">
+        <mat-icon aria-label="Editar fila">edit</mat-icon>
+      </button>
+      <button  (click)="mostrarDetallesModal(element)">
+        <mat-icon aria-label="Mostrar detalles">info</mat-icon>
+      </button>  
+    </td>
+  </ng-container>
+  
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
 
   
   

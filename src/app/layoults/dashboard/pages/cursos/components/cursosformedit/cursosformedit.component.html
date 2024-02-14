@@ -1,35 +1,52 @@
 <form [formGroup]="cursosForm" (ngSubmit)="onSubmit()">
   <button mat-button class="x" (click)="cerrarModal()">
     <mat-icon aria-label="close-button">clear</mat-icon>
-  </button>
-  <h2 class="user-form-modal-header">Formulario de Curso</h2> 
+  </button> 
   <div class="container">
     <div class="form">
+     
       <mat-form-field class="name">
         <mat-label>Nombre del Curso</mat-label>
         <input formControlName="name" matInput >
       </mat-form-field>
-      
-      <mat-form-field class="date">
+       <div>
+<mat-form-field class="date">
         <mat-label>Dias de Cursada</mat-label>
-        <input formControlName="date" matInput />
+        <mat-select formControlName="date">
+          <mat-option value="Lunes & Miercoles">Lunes & Miercoles</mat-option>
+          <mat-option value="Martes & Jueves">Martes & Jueves</mat-option>
+          <mat-option value="Sábados & Domingo">Sábados & Domingo</mat-option>
+        </mat-select>
       </mat-form-field>
-      
       <mat-form-field class="hours">
         <mat-label>Horarios</mat-label>
-        <input formControlName="hours" matInput  />
+        <mat-select formControlName="hours">
+          <mat-option value="12:00 - 16:00 hs">12:00 - 16:00 hs</mat-option>
+          <mat-option value="20:00 - 22:00 hs">20:00 - 22:00 hs</mat-option>
+          <mat-option value="17:00 - 21:00 hs">17:00 - 21:00 hs</mat-option>
+        </mat-select>
       </mat-form-field>
+     </div>
+      <div>
+        <mat-form-field class="start">
+          <mat-label>Inicio de Curso</mat-label>
+          <input matInput [matDatepicker]="startPicker" formControlName="start">
+          <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
+          <mat-datepicker #startPicker></mat-datepicker>
+        </mat-form-field>
+        
+        <mat-form-field class="end">
+          <mat-label>Finalización de Curso</mat-label>
+          <input matInput [matDatepicker]="endPicker" formControlName="end">
+          <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
+          <mat-datepicker #endPicker></mat-datepicker>
+        </mat-form-field>     
+      </div>
       
       <mat-form-field class="description">
         <mat-label>Descripción</mat-label>
         <input formControlName="description" matInput  />
       </mat-form-field>
-      
-      <mat-form-field class="price">
-        <mat-label>Precio</mat-label>
-        <input formControlName="price" matInput />
-      </mat-form-field>      
-
       <button  class="button" mat-button>Cargar</button>
     </div>
   </div>

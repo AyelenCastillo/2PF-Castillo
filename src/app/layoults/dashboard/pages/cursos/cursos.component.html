@@ -1,5 +1,62 @@
-<button mat-raised-button class="Acursos" (click)="abrirFormulario()">Agregar Curso</button>
-    <table mat-table [dataSource]="cursos" class="mat-elevation-z8">
+<div class="container">  
+  <div [ngClass]="{ 'disabled-accordion': !accordionEnabled }">
+    <mat-accordion >
+      <mat-expansion-panel [expanded]="false" hideToggle="false">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Agregar Curso
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div class="form-container"> 
+          <form [formGroup]="courseForm" (ngSubmit)="onSubmit()"> 
+            <mat-form-field class="name">
+              <mat-label>Nombre del Curso</mat-label>
+              <input formControlName="name" matInput>
+            </mat-form-field>
+            <div class="from">
+              <mat-form-field class="date">
+                <mat-label>Dias de Cursada</mat-label>
+                <mat-select formControlName="date">
+                  <mat-option value="Lunes & Miercoles">Lunes & Miercoles</mat-option>
+                  <mat-option value="Martes & Jueves">Martes & Jueves</mat-option>
+                  <mat-option value="Sábados & Domingo">Sábados & Domingo</mat-option>
+                </mat-select>
+              </mat-form-field>
+              <mat-form-field class="hours">
+                <mat-label>Horarios</mat-label>
+                <mat-select formControlName="hours">
+                  <mat-option value="12:00 - 16:00 hs">12:00 - 16:00 hs</mat-option>
+                  <mat-option value="20:00 - 22:00 hs">20:00 - 22:00 hs</mat-option>
+                  <mat-option value="17:00 - 21:00 hs">17:00 - 21:00 hs</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="from">
+              <mat-form-field class="start">
+                <mat-label>Inicio de Curso</mat-label>
+                <input matInput [matDatepicker]="startPicker" formControlName="start">
+                <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
+                <mat-datepicker #startPicker></mat-datepicker>
+              </mat-form-field>
+              <mat-form-field class="end">
+                <mat-label>Finalización de Curso</mat-label>
+                <input matInput [matDatepicker]="endPicker" formControlName="end">
+                <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
+                <mat-datepicker #endPicker></mat-datepicker>
+              </mat-form-field>            
+            </div>
+            <mat-form-field class="description">
+              <mat-label>Descripción</mat-label>
+              <input formControlName="description" matInput>
+            </mat-form-field>
+            <button type="submit" class="cargar" mat-button>Cargar</button>
+          </form>   
+        </div> 
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+  
+    <table mat-table [dataSource]="courses" class="mat-elevation-z8">
   
       <ng-container matColumnDef="id">
         <th mat-header-cell *matHeaderCellDef appSizeTitle> No. </th>
@@ -21,13 +78,22 @@
         <td mat-cell *matCellDef="let element"> {{element.hours}} </td>
       </ng-container>
 
+      <ng-container matColumnDef="start">
+        <th mat-header-cell *matHeaderCellDef appSizeTitle>Inicio de Curso </th>
+        <td mat-cell *matCellDef="let element"> {{element.start}} </td>
+      </ng-container>
+      <ng-container matColumnDef="end">
+        <th mat-header-cell *matHeaderCellDef appSizeTitle> Finalización de Curso </th>
+        <td mat-cell *matCellDef="let element"> {{element.end}} </td>
+      </ng-container>
+
       <ng-container matColumnDef="actions">
         <th mat-header-cell *matHeaderCellDef appSizeTitle> Acciones </th>
         <td *matCellDef="let element">
-          <button (click)="eliminarFila(element)">
+          <button (click)="deleteCourse(element.id)">
             <mat-icon aria-label="Eliminar fila">delete</mat-icon>
           </button>
-          <button   (click)="editarFila(element)">
+          <button   (click)="editCourse(element)">
             <mat-icon aria-label="Editar fila">edit</mat-icon>
           </button>
           <button  (click)="mostrarDetallesModal(element)">
@@ -40,6 +106,6 @@
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
-
+  </div>
   
   

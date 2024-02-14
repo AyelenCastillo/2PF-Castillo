@@ -3,34 +3,38 @@
     flex-direction: column;
   }
 
-
-  form{
-    background-color: beige;
-    display: flex;
-    justify-content: center;
-    align-items: center; 
-    padding: 1rem;
-  }
-
-.name,.lastname,.password,.role,.email{
-    width: 100%;
-  padding: 8px;
+.container{
+  width: 100%;
+  margin-bottom: 20px;
+}
+.form{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.button{
-    align-items: center;
-    width: 50%;
-    height: 50px;
-    margin-top: 15px;
-    background-color: white;
-    border-radius: 10px;
-    padding: 2%;
-  }
-  .button:hover{
-    background-color: lightgray;
-  }
 
-  .x{
-    display: flex;
-    margin-left: auto;
-  }
+form{
+  padding: 1rem;
+}
+.button{
+  align-items: center;
+  width: 50%;
+  height: 50px;
+  margin-top: 15px;
+  background-color: white;
+  border-radius: 10px;
+  padding: 2%;
+}
+.button:hover{
+  background-color: lightgray;
+}
+
+.user-form-modal-header{
+  margin-top: 20px;
+}
+
+.x{
+  display: flex;
+  margin-left: auto;
+}

@@ -1,97 +1,41 @@
 import { Injectable } from "@angular/core";
 import { User } from "../users/models";
-import { of } from "rxjs";
-
+import { HttpClient } from "@angular/common/http";
+import { Observable, map } from "rxjs";
 
 @Injectable()
-
-
 export class UsersService {
+  constructor(private httpClient: HttpClient) {}
 
-   users: User[] = [
-    {
-        id: 1,
-        firstName: "Alejandro",
-        lastName: "García",
-        email: "alejandro_garcia@example.com",
-        password: "123456789",
-        role: "Estudiante",
-      },
-      {
-        id: 2,
-        firstName: "Valentina",
-        lastName: "Rodriguez",
-        email: "valentina_rodriguez@example.com",
-        password: "123456789",
-        role: "Estudiante",
-      },
-      {
-        id: 3,
-        firstName: "Sebastian",
-        lastName: "Perez",
-        email: "sebastian_perez@example.com",
-        password: "123456789",
-        role: "Estudiante",
-      },
-      {
-        id: 4,
-        firstName: "Sophia",
-        lastName: "Rodriguez",
-        email: "sophia_rodriguez@example.com",
-        password: "pass123",
-        role: "Profesor",
-      },
-      {
-        id: 5,
-        firstName: "Daniel",
-        lastName: "Hernandez",
-        email: "daniel_hernandez@example.com",
-        password: "d@ni3lP@ss",
-        role: "Estudiante",
-      },
-      {
-        id: 6,
-        firstName: "Emily",
-        lastName: "Johnson",
-        email: "emily_johnson@example.com",
-        password: "password123!",
-        role: "Estudiante",
-      },
-      {
-        id: 7,
-        firstName: "Juan",
-        lastName: "Ramirez",
-        email: "juan_ramirez@example.com",
-        password: "ju@nR@mir3z",
-        role: "Profesor",
-      },
-      {
-        id: 8,
-        firstName: "Ava",
-        lastName: "Taylor",
-        email: "ava_taylor@example.com",
-        password: "taylorAva567",
-        role: "Estudiante",
-      },
-      {
-        id: 9,
-        firstName: "Eduardo",
-        lastName: "Gomez",
-        email: "eduardo_gomez@example.com",
-        password: "edu1234",
-        role: "Estudiante",
-      },
-      {
-        id: 10,
-        firstName: "Mia",
-        lastName: "Martinez",
-        email: "mia_martinez@example.com",
-        password: "martinezMia",
-        role: "Estudiante",
-      },
-  ];
+  getUsers(): Observable<User[]> {
+    return this.httpClient.get<User[]>('http://localhost:3000/users');
+  }
+
+  addUser(newUser: User): Observable<User> {
+    return this.httpClient.post<User>('http://localhost:3000/users', newUser);
+  }
+
+  deleteUser(userId: number): Observable<void> {
+    return this.httpClient.delete<void>(`http://localhost:3000/users/${userId}`);
+  }
   
-    getUsers(){
-        return of(this.users);
-    }
+  getUserById(userId: number): Observable<User> {
+    return this.httpClient.get<User>(`http://localhost:3000/users/${userId}`);
+  }
+
+  updateUser(updatedUsers: User): Observable<User> {
+    return this.httpClient.put<User>(`http://localhost:3000/users/${updatedUsers.id}`, updatedUsers);
+  }
+
+  findUserByRegistrationInfo(firstName: string, lastName: string, email: string): Observable<User | undefined> {
+    return this.httpClient.get<User[]>('http://localhost:3000/users').pipe(
+      map(users => users.find(user => 
+        user.firstName === firstName && 
+        user.lastName === lastName && 
+        user.email === email
+      ))
+    );
+  }
+
+ 
 }

@@ -1,15 +1,24 @@
 <div>
-    <button mat-button class="x" (click)="cerrar()"> <mat-icon aria-label="close-button">clear</mat-icon></button>
-    <h2>Detalles del Usuario</h2>
-    <p><strong>ID:</strong> {{ Inscripciones.id }}</p>
-    <p><strong>Nombre Completo:</strong> {{ Inscripciones.firstName }} {{ Inscripciones.lastName }}</p>
-    <p><strong>Email:</strong> {{ Inscripciones.email }}</p>
-    <p><strong>Curso:</strong> {{ Inscripciones.curso }}</p>
-    <p><strong>Fecha de Cursada:</strong> {{ Inscripciones.date }}</p>
-    <p><strong>Horario:</strong> {{ Inscripciones.hours }}</p>
-    <p><strong>Rol:</strong> {{ Inscripciones.role }}</p>
-    <p><strong>N° de Documento:</strong> {{ Inscripciones.dni }}</p>
-    <p><strong>Fecha de Nacimiento:</strong> {{ Inscripciones.birth }}</p>
-
-  </div>
-  
+  <button mat-button class="x" (click)="cerrar()"> <mat-icon aria-label="close-button">clear</mat-icon></button>
+  <h2>Detalles Inscripción</h2>
+  <p><strong>Nombre Completo:</strong> {{ registration?.firstName }} {{ registration?.lastName }}</p>
+  <p><strong>Email:</strong> {{ registration?.email }}</p>
+  <p><strong>Curso:</strong> {{ registration?.course }}</p>
+  <div>
+      <label><h1>Información del Usuario:</h1></label>
+      <p><strong>Nombre Completo:</strong> {{ usuario?.firstName }} {{ usuario?.lastName }}</p>
+      <p><strong>Email:</strong> {{ usuario?.email }}</p>
+      <p><strong>Número de Documento:</strong> {{ usuario?.dni }}</p> 
+      <p><strong>Fecha de Nacimiento:</strong> {{ usuario?.birth | date: 'dd/MM/yyyy'}}</p> 
+      <p><strong>Rol:</strong> {{ usuario?.role }}</p>    
+  </div> 
+  <div>
+    <label><h1>Información del Curso:</h1></label>
+    <p><strong>Nombre del Curso:</strong> {{ course?.name }}</p>
+    <p><strong>Días de Cursada:</strong> {{ course?.date }}</p>
+    <p><strong>Horarios:</strong> {{ course?.hours }}</p>
+    <p><strong>Inicio de Curso:</strong> {{ course?.start | date: 'dd/MM/yyyy' }}</p>
+    <p><strong>Finalización de Curso:</strong> {{ course?.end | date: 'dd/MM/yyyy' }}</p>
+    <p><strong>Descripción:</strong> {{ course?.description }}</p>  
+</div> 
+</div>

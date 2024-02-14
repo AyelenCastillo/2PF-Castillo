@@ -1,8 +1,10 @@
-export interface Cursos {
-    id: number;
+export interface Course {
+    idCourse: number;
     name: string;
     hours: string;
     date: string;
+    start:string;
+    end:string;
     description: string;
-    price: string;
+    id:string;
 }

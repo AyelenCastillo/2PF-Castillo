@@ -1,14 +1,8 @@
 import { Component, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home.component';
-import {MatCardModule} from '@angular/material/card';
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
-import {MatBadgeModule} from '@angular/material/badge';
-import { MatGridListModule } from '@angular/material/grid-list';
 import { RouterModule, Routes } from '@angular/router';
-import { MatTabsModule } from '@angular/material/tabs';
-import { MatPaginatorModule } from '@angular/material/paginator';
+import { SharedModule } from '../../../../shared/shared.module';
 
 const routes: Routes = [
   {
@@ -24,13 +18,7 @@ const routes: Routes = [
   ],
   imports: [
     CommonModule,
-    MatCardModule,
-    MatButtonModule,
-    MatIconModule,
-    MatBadgeModule,
-    MatTabsModule,
-    MatPaginatorModule,
-    MatGridListModule,
+    SharedModule,
     RouterModule.forChild(routes),
   ],
   exports:[

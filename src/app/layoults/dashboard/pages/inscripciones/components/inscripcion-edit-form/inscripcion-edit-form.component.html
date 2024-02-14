@@ -1,79 +1,43 @@
-<form [formGroup]="InscripcionesForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="registrationForm" (ngSubmit)="onSubmit()"> 
   <button mat-button class="x" (click)="cerrarModal()">
     <mat-icon aria-label="close-button">clear</mat-icon>
   </button>
-    <h2 class="user-form-modal-header">Formulario de Inscripción</h2>   
     <div class="container">
-          <mat-form-field class="firstName">
-            <mat-label>Nombre</mat-label>
-            <input formControlName="firstName" matInput type="text" />
-          </mat-form-field>
-          <mat-form-field class="lastname">
-            <mat-label>Apellido</mat-label>
-            <input formControlName="lastName" matInput type="text" />
-          </mat-form-field>
-    
-        <mat-form-field class="email">
-          <mat-label>Email</mat-label>
-          <input formControlName="email" matInput type="email" />
-          <mat-error *ngIf="InscripcionesForm.get('email')?.touched && InscripcionesForm.get('email')?.hasError('email')">
-            Por favor, introduce un email válido.
-          </mat-error>
-        </mat-form-field>
-    
-          <mat-form-field class="password">
-            <mat-label>Contraseña</mat-label>
-            <input formControlName="password" matInput type="password" />
-            <mat-error *ngIf="InscripcionesForm.get('password')?.touched && InscripcionesForm.get('password')?.hasError('invalidPassword')">
-              La contraseña debe contener al menos una letra y un número.
-            </mat-error>        
-          </mat-form-field>
+      <mat-form-field class="firstName">
+        <mat-label>Nombre</mat-label>
+        <input formControlName="firstName" matInput type="text" />
+      </mat-form-field>
+      <mat-form-field class="lastname">
+        <mat-label>Apellido</mat-label>
+        <input formControlName="lastName" matInput type="text" />
+      </mat-form-field>
+  
+      <mat-form-field class="email">
+        <mat-label>Email</mat-label>
+        <input formControlName="email" matInput type="email" />
+        <mat-error *ngIf="registrationForm.get('email')?.touched && registrationForm.get('email')?.hasError('email')">
+          Por favor, introduce un email válido.
+        </mat-error>
+      </mat-form-field>
+  
+      <mat-form-field class="curso">
+        <mat-label>Curso</mat-label>
+        <mat-select formControlName="course" (selectionChange)="onCourseSelectionChange($event.value)">
+          <mat-option *ngFor="let course of courses" [value]="course.name">{{ course.name }}</mat-option>
+        </mat-select>            
+      </mat-form-field>
+  
+      <mat-form-field class="schedule" *ngIf="selectedCourseSchedule && selectedCourseSchedule.date && selectedCourseSchedule.hours">
+        <mat-label>Día y Hora</mat-label>
+        <mat-select formControlName="schedule">
+          <mat-option [value]="selectedCourseSchedule.date + ' ' + selectedCourseSchedule.hours">
+            {{ selectedCourseSchedule.date }} - {{ selectedCourseSchedule.hours }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
 
-          <mat-form-field class="dni">
-            <mat-label>Número de Documento</mat-label>
-            <input formControlName="dni" matInput type="text" />
-          </mat-form-field>
-
-          <mat-form-field class="birth">
-            <mat-label>Fecha de Nacimiento</mat-label>
-            <input formControlName="birth" matInput type="text" />
-          </mat-form-field>
-
-          <mat-form-field class="curso">
-            <mat-label>Curso</mat-label>
-            <mat-select formControlName="curso">
-              <mat-option value="Photoshop & Ilustrator">Photoshop & Ilustrator</mat-option>
-              <mat-option value="Dibujo Digital ">Dibujo Digital </mat-option>
-              <mat-option value="Introdución al Diseño Grafico"> Introdución al Diseño Grafico </mat-option>
-            </mat-select>
-          </mat-form-field>
-
-          <mat-form-field class="date">
-            <mat-label>Fecha de cursada</mat-label>
-            <mat-select formControlName="date">
-              <mat-option value="Lunes & Miercoles">Lunes & Miercoles</mat-option>
-              <mat-option value="Martes & Jueves">Martes & Jueves</mat-option>
-            </mat-select>
-          </mat-form-field>
-
-          <mat-form-field class="hours">
-            <mat-label>Horario</mat-label>
-            <mat-select formControlName="hours">
-              <mat-option value="20:00 - 22:00 hs">20:00 - 22:00 hs</mat-option>
-              <mat-option value="12:00 - 16:00 hs">12:00 - 16:00 hs</mat-option>
-            </mat-select>
-          </mat-form-field>
-    
-          <mat-form-field class="role">
-            <mat-label>Rol</mat-label>
-            <mat-select formControlName="role">
-              <mat-option value="Estudiante">Estudiante</mat-option>
-              <mat-option value="Profesor">Profesor</mat-option>
-            </mat-select>
-          </mat-form-field>
-    
-          <button type="submit" class="button" mat-button>Cargar</button>
-        </div>
-    </form>
-    
-    
+      <input type="hidden" formControlName="id" />
+  
+      <button type="submit" class="button" mat-button>Cargar</button>
+    </div>
+</form>
